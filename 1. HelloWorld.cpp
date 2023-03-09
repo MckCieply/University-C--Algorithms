@@ -2,7 +2,7 @@
 using namespace std;
 int main(int argc, char* argv[]){
     cout <<"Witaj swiecie\n";
-    cout << "\n INTS " << endl;
+    cout << "\n LICZBY STALE " << endl;
     int a,b,c;
     a = 7;
     b = 6/3;
@@ -17,7 +17,7 @@ int main(int argc, char* argv[]){
     c = a % b;
     cout << "Reszta: " << c << endl;
 
-    cout << "\n FLOATS " << endl;
+    cout << "\n LICZBY ZMIENNOPRZECINKOWE " << endl;
     float x, y, z;
     x = 5.6;
     y = 2.5;
@@ -29,4 +29,17 @@ int main(int argc, char* argv[]){
     cout << "Iloczyn: " << z << endl;
     z = x / y;
     cout << "Iloraz: " << z << endl;
+
+    cout << "\n DANE OD UZYTKOWNIKA "<< endl;
+    cout << "Podaj a: \n>>";
+    cin >> a;
+    cout << "\nPodaj b: \n>>";
+    cin >> b;
+    //Mozna uzywac intow jako bolean, if(a) odda true jak a != 0, false jak a == 0
+    if (a == b){
+        cout << "Liczby sa rowne" << endl;
+    }
+    else{
+        cout << "Liczby sa rozne" << endl;
+    }
 }
