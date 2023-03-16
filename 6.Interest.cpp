@@ -4,7 +4,17 @@ using namespace std;
 
 double odsetkiProgresywne( double kwota, double lbDni, double odsetkiZaDzien )
 {
-   // Do zrobienia
+    float wynik = 0.0;
+    for(int i = 0; i < lbDni; i++){
+    double odsetki = kwota * (odsetkiZaDzien/100);
+    kwota += odsetki;
+    wynik += odsetki;
+   }
+   wynik *= 100;
+   wynik = (int)wynik;
+   wynik = (float)wynik;
+   wynik /= 100;
+   return wynik;
 }
 
 int main()
@@ -23,7 +33,7 @@ int main()
   if(odsetki == 343.91)
     cout << "\nTest 2: OK";
   else
-    cout << "\nTest 2: Blad";
+    cout << "\nTest 2: Blad " << odsetki;
 
   // Test 3
   // Prosz� opracowa� test dla innych warto�ci
