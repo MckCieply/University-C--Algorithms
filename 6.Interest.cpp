@@ -36,9 +36,17 @@ int main()
 
   // Test 3
   // Prosz� opracowa� test dla innych warto�ci
-
+  odsetki = odsetkiProgresywne(5000, 5, 2);
+  if(odsetki == 520.40)
+    cout << "\nTest 3: OK";
+  else
+    cout << "\nTest 3: Blad ";
   // Test 4
   // Prosz� opracowa� test dla innych warto�ci
-
+odsetki = odsetkiProgresywne(5000, 2, 10);
+  if(odsetki == 1050.0)
+    cout << "\nTest 4: OK";
+  else
+    cout << "\nTest 4: Blad ";
   return EXIT_SUCCESS;
 }
