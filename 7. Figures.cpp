@@ -54,6 +54,28 @@ void rectangle(){
     cout << "\nPole prostokatu o bokach " << a << " i " << b << " wynosi " << result << ". \n";
 }
 
+void circle(){
+    double r = input_num('r');
+    double result = circle_formula(r);
+    cout << "\nPole kola o promieniu " << r << " i zakladajac ze pi to 3.14 wynosi " << result << ". \n";
+}
+
+void triangle(){
+    double a = input_num('a');
+    double h = input_num('h');
+    double result = triangle_formula(a, h);
+    cout << "\nPole trojkata o podstawie " << a << " i wysokosci " << h << " wynosi " << result << ". \n";
+}
+
+void trapezoid(){
+    double a = input_num('a');
+    double b = input_num('b');
+    double h = input_num('h');
+    double result = trapezoid_formula(a, b, h);
+    cout << "\nPole prostokatu o bokach " << a << " i " << b << " i wysokosci " << h << " wynosi " << result << ". \n";
+}
+
+
 int main(){
     cout << "\nZeby zakonczyc dzialanie programu, prosze podac 999";
     while(true){
@@ -62,6 +84,7 @@ int main(){
         cout << "\n 3. Kolo";
         cout << "\n 4. Trojkat";
         cout << "\n 5. Trapez";
+        cout << "\n 999. Koniec";
         int input;
         cout << "\n >>> ";
         cin >> input;
@@ -73,6 +96,12 @@ int main(){
             square();
         else if(input == 2)
             rectangle();
-            
+        else if(input == 3)
+            circle();
+        else if(input == 4)
+            triangle();
+        else if(input == 5)
+            trapezoid();
+                
     }
 }
