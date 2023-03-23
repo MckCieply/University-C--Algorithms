@@ -14,6 +14,7 @@ double input_num(char character){
     }
     return num;
 }
+
 double square_formula(double a){
     double result = a*a;
     return result;
@@ -40,6 +41,38 @@ double trapezoid_formula(double a, double b, double h){
     return result;
 }
 
-int main(){
+void square(){
+    double a = input_num('a');
+    double result = square_formula(a);
+    cout << "\nPole kwadratu o boku " << a << " wynosi " << result << ". \n";
+}
 
+void rectangle(){
+    double a = input_num('a');
+    double b = input_num('b');
+    double result = rectangle_formula(a, b);
+    cout << "\nPole prostokatu o bokach " << a << " i " << b << " wynosi " << result << ". \n";
+}
+
+int main(){
+    cout << "\nZeby zakonczyc dzialanie programu, prosze podac 999";
+    while(true){
+        cout << "\n 1. Kwadrat";
+        cout << "\n 2. Prostokat";
+        cout << "\n 3. Kolo";
+        cout << "\n 4. Trojkat";
+        cout << "\n 5. Trapez";
+        int input;
+        cout << "\n >>> ";
+        cin >> input;
+        if(input == 999){
+            cout << "Koniec.";
+            break;
+        }
+        if(input == 1)
+            square();
+        else if(input == 2)
+            rectangle();
+            
+    }
 }
