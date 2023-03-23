@@ -2,6 +2,18 @@
 
 using namespace std;
 
+double input_num(char character){
+    double num;
+    while(true){
+        cout << "\nProsze podac wartosc " << character << ": " ;
+        cin >> num;
+        if(num >= 0)
+            break;
+        else
+            cout << "\nPodano liczbe mniejsza od zera, prosze sprobowac jeszcze raz.";
+    }
+    return num;
+}
 double square_formula(double a){
     double result = a*a;
     return result;
