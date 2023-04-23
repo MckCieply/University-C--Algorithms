@@ -1,11 +1,13 @@
 #include <iostream>
+#include <string>
 using namespace std;
-int fillRevenue(int i){
+int fillArray(int i, string type){
     double input;
-    cout << "Przychody z " << i+1 <<" miesiaca: ";
+    cout << type << " z " << i+1 <<" miesiaca: ";
     cin >> input;
     return input;
 }
+
 void menu(){
     int choice;
     double revenue[12];
@@ -17,11 +19,13 @@ void menu(){
         switch(choice){
             case 1:
                 for(int i = 0; i < 12; i++){
-                    costs[i] = fillRevenue(i);
+                    revenue[i] = fillArray(i, "Przychody");
                 }
                 break;
             case 2:
-                //Funkcja
+                for(int i = 0; i < 12; i++){
+                    costs[i] = fillArray(i, "Koszty");
+                }
                 break;
             case 3:
                 //Funkcja
@@ -32,6 +36,7 @@ void menu(){
             case 5:
                 //Funkcja
                 break;
+
         }
     }
     else
