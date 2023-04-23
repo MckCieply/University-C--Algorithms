@@ -1,5 +1,11 @@
 #include <iostream>
 using namespace std;
+int fillRevenue(int i){
+    double input;
+    cout << "Przychody z " << i+1 <<" miesiaca: ";
+    cin >> input;
+    return input;
+}
 void menu(){
     int choice;
     double revenue[12];
@@ -10,7 +16,9 @@ void menu(){
     if(choice >= 1 && choice <= 5){
         switch(choice){
             case 1:
-
+                for(int i = 0; i < 12; i++){
+                    costs[i] = fillRevenue(i);
+                }
                 break;
             case 2:
                 //Funkcja
