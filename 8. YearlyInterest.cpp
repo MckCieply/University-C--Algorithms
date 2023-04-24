@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
 using namespace std;
-double fillArray(int i, string type){
+double fillArray(int i, string type, string months[]){
     double input;
     do{
-    cout << type << " z " << i+1 <<" miesiaca: ";
+    cout << type << " w " << months[i] <<": ";
     cin >> input;
     if(input < 0){
         cout << "Podano liczbe ujemna, sprobuj ponownie \n";
@@ -31,13 +31,34 @@ double sum(double arr[]){
     return sum;
 }
 
-void balance(double costs[], double revenue[], double income[]){
+void minMaxAvg(double arr[], string type, string months[]){
+    int min_month = 0;
+    int max_month = 0;
+    double min = arr[0];
+    double max = arr[0];
+    double avg = sum(arr) / 12;
+    for(int i = 1; i<12; i++){
+        if(min > arr[i]){      //Setting new minimum
+            min = arr[i];
+            min_month = i;
+    }
+        else if(max < arr[i]){  //Setting new maximum
+            max = arr[i];
+            max_month = i;
+        }
+    }
+    cout << "\nMinimalny " << type <<": " << min << " nastapil w "<< months[min_month] << endl;
+    cout << "Maksymalny " << type <<": " << max << " nastapil w "<< months[min_month] << endl;
+    cout << "Sredni " << type <<": " << avg << endl;
+
+}
+void balance(double income[], double revenue[], double costs[]){
     cout << "+------------+------------+------------+-------------+\n";
     cout << "| Przychod   | Koszt      | Dochod     | strata/zysk |\n";
     cout << "+------------+------------+------------+-------------+\n";
 
     for(int i=0; i<12; i++){
-        printf("| %10.2lf | %10.2lf | %10.2lf |", revenue[i], costs[i],income[i]);
+        printf("| %10.2lf | %10.2lf | %10.2lf |", revenue[i], costs[i], income[i]);
         if(income[i]>0){
             cout << " Zysk        |";
         }
@@ -54,6 +75,7 @@ void balance(double costs[], double revenue[], double income[]){
 
 void menu(){
     int choice;
+    string MONTHS[] = {"Styczen", "Luty", "Marzec", "Kwiecien", "Maj", "Czerwiec", "Lipiec", "Sierpien", "Wrzesien", "Pazdziernik", "Listopad", "Grudzien"};
     double revenue[12];
     double costs[12];
     double income[12];
@@ -70,16 +92,18 @@ void menu(){
             switch(choice){
                 case 1:     //Revenue input
                     for(int i = 0; i < 12; i++){
-                        revenue[i] = fillArray(i, "Przychody");
+                        revenue[i] = fillArray(i, "Przychody", MONTHS);
                     }
                     revenueFlag = true;
                     break;
+
                 case 2:     //Costs input
                     for(int i = 0; i < 12; i++){
-                        costs[i] = fillArray(i, "Koszty");
+                        costs[i] = fillArray(i, "Koszty", MONTHS);
                     }
                     costsFlag = true;
                     break;
+
                 case 3:     //Yearly
                     if(!(revenueFlag && costsFlag)){
                         cout << "Nie mozna wyliczyc sumarycznego dochodu, przychod lub koszt nie zostal podany.\n";
@@ -89,19 +113,21 @@ void menu(){
                     cout << "Sumaryczny koszt: " << sum(costs) << endl;
                     cout << "Sumaryczny dochod: " << sum(income) << endl << endl;
                     break;
-                case 4:
-                    //Funkcja
+
+                case 4:     //MinMaxAvg
+                    minMaxAvg(revenue, "przychod", MONTHS);
+                    minMaxAvg(costs, "koszt", MONTHS);
+                    minMaxAvg(income, "dochod", MONTHS);
                     break;
+
                 case 5:
-                    //Funkcja
+                    balance(income, revenue, costs);
                     break;
             }
         }
         else
             cout << "Podano zle dane";
     }
-    for(int i = 0; i < 12; i++)
-        cout << income[i] << " ";
 }
 
 int main(int argc, char* argv[]){
