@@ -52,6 +52,7 @@ void minMaxAvg(double arr[], string type, string months[]){
     cout << "Sredni " << type <<": " << avg << endl;
 
 }
+
 void balance(double income[], double revenue[], double costs[]){
     cout << "+------------+------------+------------+-------------+\n";
     cout << "| Przychod   | Koszt      | Dochod     | strata/zysk |\n";
@@ -82,13 +83,15 @@ void menu(){
     bool revenueFlag = false;
     bool costsFlag = false;
     while(choice != 99){                    // Checking when to end repeating code
-        if(revenueFlag && costsFlag)        // Checking whether we can calculate income already
+        if(revenueFlag && costsFlag){        // Checking whether we can calculate income already
             calculateIncome(income, revenue, costs);
+            cout << "\n\nObliczono dochod\n\n";
+        }
 
         cout << "1. Wprowadz przychody \n2. Wprowadz koszty \n3. Wyliczenie \n4. Min Max Avg \n5. Bilans roczny\n99. Koniec\n";
         cout << "Prosze podac pozycje w menu: ";
         cin >> choice;
-        if(choice >= 1 && choice <= 5){
+        if(choice >= 1 && choice <= 5){         //Making sure user choosed proper option
             switch(choice){
                 case 1:     //Revenue input
                     for(int i = 0; i < 12; i++){
@@ -105,7 +108,7 @@ void menu(){
                     break;
 
                 case 3:     //Yearly
-                    if(!(revenueFlag && costsFlag)){
+                    if(!(revenueFlag && costsFlag)){        //Double checking whether user inserted already revenue and costs
                         cout << "Nie mozna wyliczyc sumarycznego dochodu, przychod lub koszt nie zostal podany.\n";
                         break;
                     }
@@ -120,7 +123,7 @@ void menu(){
                     minMaxAvg(income, "dochod", MONTHS);
                     break;
 
-                case 5:
+                case 5:     //Table showing profit or no-profit
                     balance(income, revenue, costs);
                     break;
             }
