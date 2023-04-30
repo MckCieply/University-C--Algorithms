@@ -16,9 +16,13 @@ using namespace std;
   Rezultat:
     dlugosc napisu liczona w znakach
 ----------------------------------------------------------------------------*/
-int str_len( char s[] )
-{
-  // Do zrobienia :)
+
+int str_len(char s[]) {
+    int count = 0;
+    while (s[count] != '\0') {
+        count += 1;
+    }
+    return count;
 }
 
 /*----------------------------------------------------------------------------
@@ -33,9 +37,15 @@ int str_len( char s[] )
   Rezultat:
     Liczba malych liter w napisie s
 ----------------------------------------------------------------------------*/
-int lwr_str_cnt( char s[] )
-{
-  // Do zrobienia :)
+
+int lwr_str_cnt(char s[]) {
+    int count = 0;
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (s[i] >= 'a' && s[i] <= 'z') {
+            count += 1;
+        }
+    }
+    return count;
 }
 
 /*----------------------------------------------------------------------------
@@ -50,11 +60,16 @@ int lwr_str_cnt( char s[] )
   Rezultat:
     Liczba duzych liter w napisie s
 ----------------------------------------------------------------------------*/
-int upr_str_cnt( char s[] )
-{
-  // Do zrobienia :)
-}
 
+int upr_str_cnt(char s[]) {
+    int count = 0;
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (s[i] >= 'A' && s[i] <= 'Z') {
+            count += 1;
+        }
+    }
+    return count;
+}
 
 /*----------------------------------------------------------------------------
   int dgt_str_cnt( char s[] )
