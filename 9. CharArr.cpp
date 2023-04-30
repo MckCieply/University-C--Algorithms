@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 using namespace std;
-
+// Jesli jakas zmienna nie jest zadeklarowana to cpp przypisuje jej randomowe miejsce w pamieci
 #define MAX_LEN 128
 
 /*----------------------------------------------------------------------------
@@ -83,6 +83,7 @@ int upr_str_cnt(char s[]) {
   Rezultat:
     Liczba cyfr w napisie s
 ----------------------------------------------------------------------------*/
+
 int dgt_str_cnt( char s[] )
 {
   int count = 0;
@@ -106,6 +107,7 @@ int dgt_str_cnt( char s[] )
   Rezultat:
     Liczba liter i cyfr w napisie s
 ----------------------------------------------------------------------------*/
+
 int nalpha_str_cnt( char s[] )
 {
   int count = 0;
@@ -131,6 +133,7 @@ int nalpha_str_cnt( char s[] )
   Rezultat:
     Liczba wystapien znaku c w napisie s
 ----------------------------------------------------------------------------*/
+
 int chr_str_cnt( char c, char s[] )
 {
   int count = 0;
@@ -156,9 +159,14 @@ int chr_str_pos( char c, char s[] )
   Rezultat:
     Pozycja znaku w tablicy liczona od 0 lub -1 gdy znak nie znaleziony
 ----------------------------------------------------------------------------*/
-int chr_str_pos( char c, char s[] )
-{
-  // Do zrobienia :)
+
+int chr_str_pos(char c, char s[]) {
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (s[i] == c) {
+            return i-1;
+        }
+    }
+    return -1;
 }
 
 /*----------------------------------------------------------------------------
@@ -175,9 +183,15 @@ int chr_str_rpos( char c, char s[] )
   Rezultat:
     Pozycja znaku w tablicy liczona od 0 lub -1 gdy znak nie znaleziony
 ----------------------------------------------------------------------------*/
-int chr_str_rpos( char c, char s[] )
-{
-  // Do zrobienia :)
+
+int chr_str_rpos(char c, char s[]) {
+    int last_pos = -1;
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (s[i] == c) {
+            last_pos = i;
+        }
+    }
+    return last_pos-1;
 }
 
 /*----------------------------------------------------------------------------
@@ -192,9 +206,14 @@ int chr_str_rpos( char c, char s[] )
   Rezultat:
     Brak
 ----------------------------------------------------------------------------*/
-void str_rev( char s[] )
-{
-  // Do zrobienia :)
+
+void str_rev(char s[]) {
+    int length = str_len(s);
+    for (int i = 0; i < length / 2; i++) {
+        char temp = s[i];
+        s[i] = s[length - i - 1];
+        s[length - i - 1] = temp;
+    }
 }
 
 // Ten main bedzie dzialal po prawidlowym zaimplementowaniu powyzszych funkcji
